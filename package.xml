@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<package>
+  <name>tum_pcl_visualizer</name>
+  <version>0.0.0</version>
+
+  <description>
+    tum_pcl_visualizer: tum csv + bag file to pcl visualizer
+  </description>
+
+  <maintainer email="eungchang_mason@kaist.ac.kr">Eungchang Mason Lee</maintainer>
+
+  <license>BSD3</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <build_depend>roscpp</build_depend>
+  <build_depend>rosbag</build_depend>
+  <build_depend>sensor_msgs</build_depend>
+  <build_depend>pcl_ros</build_depend>
+  <build_depend>tf</build_depend>
+  <build_depend>tf_eigen</build_depend>
+  <build_depend>livox_ros_driver</build_depend>
+
+  <run_depend>roscpp</run_depend>
+  <run_depend>rosbag</run_depend>
+  <run_depend>sensor_msgs</run_depend>
+  <run_depend>pcl_ros</run_depend>
+  <run_depend>tf</run_depend>
+  <run_depend>tf_eigen</run_depend>
+  <run_depend>livox_ros_driver</run_depend>
+
+  <export>
+  </export>
+</package>
