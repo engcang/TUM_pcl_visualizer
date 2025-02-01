@@ -15,12 +15,14 @@ find_package(catkin REQUIRED COMPONENTS
   roscpp
   rosbag
   sensor_msgs
+  nav_msgs
   pcl_ros
   tf
-  tf_eigen
+  tf_conversions
   livox_ros_driver
 )
 find_package(Eigen3 REQUIRED)
+find_package(yaml-cpp REQUIRED)
 # find_package(PCL REQUIRED)
 
 ### Get packages headers
@@ -34,4 +36,4 @@ catkin_package()
 
 #### Build
 add_executable(${PROJECT_NAME}_node src/main_node.cpp)
-target_link_libraries(${PROJECT_NAME}_node ${catkin_LIBRARIES} ${EIGEN3_LIBS} ${PCL_LIBRARIES})
+target_link_libraries(${PROJECT_NAME}_node ${catkin_LIBRARIES} ${EIGEN3_LIBS} ${PCL_LIBRARIES} yaml-cpp)
