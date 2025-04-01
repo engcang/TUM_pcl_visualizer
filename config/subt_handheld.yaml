@@ -2,4 +2,4 @@ extrinsic_T: [0.08, 0.029, 0.03]
 extrinsic_R: [1, 0, 0,
             0, 1, 0,
             0, 0, 1]
-topic_name: "/velodyne_packets"
+topic_name: "/velodyne_points"

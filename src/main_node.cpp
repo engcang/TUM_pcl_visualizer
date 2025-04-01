@@ -179,9 +179,9 @@ int main(int argc, char **argv)
     tum_path.header.frame_id = "map";
 
     // 명령줄 인자 받기
-    if (argc != 8)
+    if (argc != 9)
     {
-        ROS_ERROR("Usage: rosrun package bag_pcl_transformer config_file bag_file csv_file publish_hz point_filter_num max_time_diff time_offset");
+        ROS_ERROR("Usage: rosrun package bag_pcl_transformer config_file bag_file csv_file publish_hz point_filter_num max_time_diff time_offset lidar_only");
         return -1;
     }
 
@@ -192,6 +192,7 @@ int main(int argc, char **argv)
     int point_filter_num = std::stoi(argv[5]);
     double max_time_diff = std::stod(argv[6]);
     double time_offset = std::stod(argv[7]);
+    bool lidar_only = std::stoi(argv[8]);
 
     // TUM CSV 데이터 로드
     auto tum_data = loadTumCsv(tum_csv);
@@ -213,8 +214,11 @@ int main(int argc, char **argv)
     std::string pcl_topic;
     loadExtrinsics(config_file, extrinsic_R, extrinsic_T, pcl_topic);
     Eigen::Matrix4d extrinsic_transform = Eigen::Matrix4d::Identity();
-    extrinsic_transform.block<3, 3>(0, 0) = extrinsic_R;
-    extrinsic_transform.block<3, 1>(0, 3) = extrinsic_T;
+    if (!lidar_only)
+    {
+        extrinsic_transform.block<3, 3>(0, 0) = extrinsic_R;
+        extrinsic_transform.block<3, 1>(0, 3) = extrinsic_T;
+    }
 
     // ROSBag 읽기
     rosbag::Bag bag;
